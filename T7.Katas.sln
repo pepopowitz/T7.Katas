@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "T7.Katas", "T7.Katas\T7.Katas.csproj", "{52398529-D3F6-4FC6-BDD2-77462BFD0030}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "T7.Katas.Tests", "T7.Katas.Tests\T7.Katas.Tests.csproj", "{03E8DD72-45A2-49C8-BFB6-024BFB331E99}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{52398529-D3F6-4FC6-BDD2-77462BFD0030}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52398529-D3F6-4FC6-BDD2-77462BFD0030}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52398529-D3F6-4FC6-BDD2-77462BFD0030}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52398529-D3F6-4FC6-BDD2-77462BFD0030}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03E8DD72-45A2-49C8-BFB6-024BFB331E99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03E8DD72-45A2-49C8-BFB6-024BFB331E99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03E8DD72-45A2-49C8-BFB6-024BFB331E99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03E8DD72-45A2-49C8-BFB6-024BFB331E99}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
