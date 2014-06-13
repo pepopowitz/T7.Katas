@@ -1,3 +1,5 @@
+using System.Net.Configuration;
+
 namespace T7.Katas.Bowling
 {
     public class BallContext
@@ -6,5 +8,6 @@ namespace T7.Katas.Bowling
         public int Value { get; set; }
         public int IncludeNextThrows { get; set; }
         public int Frame { get; set; }
+        public bool LastBallInFrame { get; set; }
     }
 }

@@ -42,6 +42,8 @@ namespace T7.Katas.Bowling
             var balls = new List<BallContext>();
             BallContext previousBall = null;
 
+            var frame = 0;
+            var ballInFrame = 0;
             for (int i = 0; i < throws.Length; i++)
             {
                 var ball = GetBallContext(throws[i], previousBall);
@@ -56,21 +58,31 @@ namespace T7.Katas.Bowling
         private BallContext GetBallContext(char ball, BallContext previousBall)
         {
             var result = new BallContext();
-
             result.Raw = ball;
+            result.Frame = previousBall == null
+                ? 1
+                : (previousBall.LastBallInFrame ? previousBall.Frame + 1 : previousBall.Frame);
+            var ballsAllowedThisFrame = result.Frame >= 10 ? 3 : 2;
+            var ballsSoFarThisFrame = previousBall == null
+                ? 0
+                : (previousBall.LastBallInFrame ? 0 : 1);
 
             switch (ball)
             {
                 case '-':
                     result.Value = 0;
+                    result.LastBallInFrame = ballsSoFarThisFrame > 0;
                     break;
                 case '/':
+                    //can't get a spare on the first ball, so who cares if previousBall could be null.
                     result.Value = 10 - previousBall.Value;
-                    result.IncludeNextThrows = 1;
+                    result.IncludeNextThrows = (result.Frame < 10) ? 1 : 0;
+                    result.LastBallInFrame = true;
                     break;
                 case 'X':
                     result.Value = 10;
-                    result.IncludeNextThrows = 2;
+                    result.IncludeNextThrows = (result.Frame < 10) ? 2 : 0;
+                    result.LastBallInFrame = (result.Frame < 10);
                     break;
                 case '0':
                 case '1':
@@ -83,6 +95,7 @@ namespace T7.Katas.Bowling
                 case '8':
                 case '9':
                     result.Value = int.Parse(ball.ToString());
+                    result.LastBallInFrame = ballsSoFarThisFrame > 0;
                     break;
             }
 

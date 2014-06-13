@@ -12,6 +12,7 @@ namespace T7.Katas.Tests
     [TestFixture]
     public class BowlingTests
     {
+        //http://www.codingdojo.org/cgi-bin/index.pl?KataBowling
         private Bowler _bowler;
         [SetUp]
         public void SetUp()
