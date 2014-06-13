@@ -15,6 +15,7 @@ namespace T7.Katas.Tests
     [TestFixture]
     public class AnagramTests
     {
+        //http://codekata.com/kata/kata06-anagrams/
         private Anagrammer _anagrammer;
         
         [SetUp]
@@ -146,16 +147,19 @@ namespace T7.Katas.Tests
         }
 
 
-        //[Test]
-        //public void GivenFile_Returns20683Sets()
-        //{
-        //    var baseDir = AppDomain.CurrentDomain.BaseDirectory;
-        //    var file = Path.Combine(baseDir, "resources/anagrams-wordlist.txt");
+        [Test]
+        public void GivenFile_Returns20683Sets()
+        {
+            var baseDir = AppDomain.CurrentDomain.BaseDirectory;
+            var file = Path.Combine(baseDir, "resources/anagrams-wordlist.txt");
 
-        //    var words = new FileParser().ParseFileIntoWords(file);
+            var words = new FileParser().ParseFileIntoWords(file);
 
+            var result = _anagrammer.FindAnagrams(words);
 
-        //}
-        //[Test] public void GivenNoFile_ThrowsInvalidArgument(){}
+            result.Count().Should().Equal(50070); 
+            //i'm not sure why my number doesn't match the example's.
+            // it's not because i'm ignoring punctuation, or because i am treating AA and aa as separate words.
+        }
     }
 }

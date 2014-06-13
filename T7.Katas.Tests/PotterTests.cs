@@ -10,6 +10,7 @@ namespace T7.Katas.Tests
     [TestFixture]
     public class PotterTests
     {
+        //http://www.codingdojo.org/cgi-bin/index.pl?KataPotter
         private Register _register;
 
         [SetUp]
