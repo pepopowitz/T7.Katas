@@ -33,8 +33,10 @@ namespace T7.Katas.Anagrams
                 }
             }
 
-            return sorted.Select(x =>
-                x.Value);
+            return sorted
+                .Where(x => x.Value.Count > 1)
+                .Select(x =>
+                    x.Value);
 
             //return new List<List<string>>();
         }

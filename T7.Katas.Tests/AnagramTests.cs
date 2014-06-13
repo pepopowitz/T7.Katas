@@ -49,42 +49,16 @@ namespace T7.Katas.Tests
             var result = _anagrammer.FindAnagrams(input);
 
             result.Should().Count.Zero();
-            result.First().Should().Count.One(); 
         }
 
         [Test]
-        public void GivenOneWord_ReturnsThatWord()
-        {
-            var input = new string[] {"word"};
-
-            var result = _anagrammer.FindAnagrams(input);
-
-            result.First().First().Should().Equal("word");
-        }
-
-        [Test]
-        public void GivenUniqueWords_ReturnsThreeUniqueWords()
+        public void GivenThreeUniqueWords_ReturnsNoAnagrams()
         {
             var input = new string[] { "worda", "wordb", "wordc" };
 
             var result = _anagrammer.FindAnagrams(input);
 
-            result.Should().Count.Exactly(3);
-            result.First().Should().Count.One();
-            result.ElementAt(1).Should().Count.One();
-            result.ElementAt(2).Should().Count.One();
-        }
-
-        [Test]
-        public void GivenUniqueWords_ReturnsOriginalWords()
-        {
-            var input = new string[] { "worda", "wordb", "wordc" };
-
-            var result = _anagrammer.FindAnagrams(input);
-
-            result.Should().Contain.One(x => x.First() == "worda");
-            result.Should().Contain.One(x => x.First() == "wordb");
-            result.Should().Contain.One(x => x.First() == "wordc");
+            result.Should().Count.Zero();
         }
 
         [Test]
@@ -112,33 +86,28 @@ namespace T7.Katas.Tests
         }
 
         [Test]
-        public void GivenThreeAnagramsAndThreeUnique_Returns4Sets()
+        public void GivenThreeAnagramsAndThreeUnique_Returns1Set()
         {
             var input = new string[] { "one", "neo", "eno", "worda", "wordb", "wordc" };
 
             var result = _anagrammer.FindAnagrams(input);
 
-            result.Should().Count.Exactly(4);
-            result.Should().Contain.One(x => x.Count() == 3);
-            result.Where(x => x.Count() == 1).Should().Count.Exactly(3);
+            result.Should().Count.One();
+            result.First().Should().Count.Exactly(3);
         }
 
         [Test]
-        public void GivenThreeAnagramsAndThreeUnique_ReturnsOriginalWords()
+        public void GivenThreeAnagramsAndThreeUnique_ReturnsOnlyAnagramsWords()
         {
             var input = new string[] { "one", "neo", "eno", "worda", "wordb", "wordc" };
 
             var result = _anagrammer.FindAnagrams(input);
 
-            var anagrams = result.First(x => x.Count() == 3);
+            var anagrams = result.First();
             anagrams.Should().Contain.One(x => x == "one");
             anagrams.Should().Contain.One(x => x == "neo");
             anagrams.Should().Contain.One(x => x == "eno");
 
-            var unique = result.Where(x => x.Count() == 1);
-            unique.Should().Contain.One(x => x.First() == "worda");
-            unique.Should().Contain.One(x => x.First() == "wordb");
-            unique.Should().Contain.One(x => x.First() == "wordc");
         }
 
         [Test]
