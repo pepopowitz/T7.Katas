@@ -40,6 +40,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Anagrams\Anagrammer.cs" />
+    <Compile Include="Bowling\BallContext.cs" />
+    <Compile Include="Bowling\Bowler.cs" />
+    <Compile Include="Bowling\GameContext.cs" />
     <Compile Include="Potter\Basket.cs" />
     <Compile Include="Potter\Books.cs" />
     <Compile Include="Potter\Register.cs" />
