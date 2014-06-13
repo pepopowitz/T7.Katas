@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Anagrams\Anagrammer.cs" />
     <Compile Include="Potter\Basket.cs" />
     <Compile Include="Potter\Books.cs" />
     <Compile Include="Potter\Register.cs" />
