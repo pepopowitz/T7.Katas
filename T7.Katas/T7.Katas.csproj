@@ -48,6 +48,10 @@
     <Compile Include="Potter\Register.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringCalculator\Calculator.cs" />
+    <Compile Include="Tennis\ITennisGame.cs" />
+    <Compile Include="Tennis\TennisGame1.cs" />
+    <Compile Include="Tennis\TennisGame2.cs" />
+    <Compile Include="Tennis\TennisGame3.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -72,6 +72,7 @@ _[Ss]cripts
 *.dll
 *.nupkg
 *.ncrunchsolution
+*.ncrunchproject
 *.dot[Cc]over
 [Ll]ogs
 csx

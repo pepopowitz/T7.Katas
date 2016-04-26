@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="AnagramTests.cs" />
     <Compile Include="BowlingTests.cs" />
+    <Compile Include="TennisTests.cs" />
     <Compile Include="PotterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\FileParser.cs" />
