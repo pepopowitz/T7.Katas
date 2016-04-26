@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +9,8 @@ namespace T7.Katas.Tennis
 {
     public class TennisGame1 : ITennisGame
     {
-        private int m_score1 = 0;
-        private int m_score2 = 0;
+        private int player1Score;
+        private int player2Score;
         private string player1Name;
         private string player2Name;
 
@@ -21,68 +22,76 @@ namespace T7.Katas.Tennis
 
         public void WonPoint(string playerName)
         {
-            if (playerName == "player1")
-                m_score1 += 1;
+            if (playerName == player1Name)
+                player1Score += 1;
             else
-                m_score2 += 1;
+                player2Score += 1;
         }
 
         public string GetScore()
         {
-            String score = "";
-            int tempScore = 0;
-            if (m_score1 == m_score2)
-            {
-                switch (m_score1)
-                {
-                    case 0:
-                        score = "Love-All";
-                        break;
-                    case 1:
-                        score = "Fifteen-All";
-                        break;
-                    case 2:
-                        score = "Thirty-All";
-                        break;
-                    default:
-                        score = "Deuce";
-                        break;
+            const int maxPointsInRegulation = 4;
 
-                }
-            }
-            else if (m_score1 >= 4 || m_score2 >= 4)
+            if (player1Score == player2Score)
             {
-                int minusResult = m_score1 - m_score2;
-                if (minusResult == 1) score = "Advantage player1";
-                else if (minusResult == -1) score = "Advantage player2";
-                else if (minusResult >= 2) score = "Win for player1";
-                else score = "Win for player2";
+                return GetEvenScore();
             }
-            else
+            if (player1Score >= maxPointsInRegulation 
+                || player2Score >= maxPointsInRegulation)
             {
-                for (int i = 1; i < 3; i++)
-                {
-                    if (i == 1) tempScore = m_score1;
-                    else { score += "-"; tempScore = m_score2; }
-                    switch (tempScore)
-                    {
-                        case 0:
-                            score += "Love";
-                            break;
-                        case 1:
-                            score += "Fifteen";
-                            break;
-                        case 2:
-                            score += "Thirty";
-                            break;
-                        case 3:
-                            score += "Forty";
-                            break;
-                    }
-                }
+                return GetOvertimeScore();
             }
-            return score;
+            return GetRegulationScore();
         }
+
+        private string GetEvenScore()
+        {
+            switch (player1Score)
+            {
+                case 0:
+                    return "Love-All";
+                case 1:
+                    return "Fifteen-All";
+                case 2:
+                    return "Thirty-All";
+                default:
+                    return "Deuce";
+            }
+        }
+
+        private string GetOvertimeScore()
+        {
+            int minusResult = player1Score - player2Score;
+            if (minusResult == 1)
+            {
+                return "Advantage " + this.player1Name;
+            }
+            if (minusResult == -1)
+            {
+                return "Advantage " + this.player2Name;
+            }
+            if (minusResult >= 2)
+            {
+                return "Win for " + this.player1Name;
+            }
+            return "Win for " + this.player2Name;
+        }
+
+        private string GetRegulationScore()
+        {
+            var player1Text = _scoreLookup[player1Score];
+            var player2Text = _scoreLookup[player2Score];
+
+            return player1Text + "-" + player2Text;
+        }
+
+        private Dictionary<int, string> _scoreLookup = new Dictionary<int, string>()
+        {
+            {0,"Love" },
+            {1, "Fifteen" },
+            {2, "Thirty" },
+            {3, "Forty" }
+        };
     }
 
 }
